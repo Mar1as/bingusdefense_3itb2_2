@@ -18,6 +18,7 @@ public class BuildingsUI : MonoBehaviour
         {
             var btn = Instantiate(buttonPrefab, transform);
             btn.GetComponent<Button>().GetComponentInChildren<TMPro.TMP_Text>().text = bld.Name;
+            btn.GetComponent<ButtonInfoForBuilding>().SetBuilding(bld);
         }
     }
 

@@ -10,6 +10,8 @@ public class CommandQueue
 
     Queue<Command> queue = new Queue<Command>();
 
+    public BuildingData building;
+
     private CommandQueue() { }
 
     public void EnqueueCommand(Command newCommand) { 

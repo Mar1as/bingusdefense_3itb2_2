@@ -16,15 +16,24 @@ public class TileDisplay : MonoBehaviour
     public void Build(GameObject building)
     {
         Instantiate(building, buildPlace.position, Quaternion.identity);
-        tileData.tileType = TileType.Occupied; // :(
+        CommandQueue.Instance.building = null;
     }
 
     private void OnMouseDown()
     {
-        CommandQueue.Instance.EnqueueCommand(new BuildCommand() { 
-            where = this,
-            what = GameObject.CreatePrimitive(PrimitiveType.Sphere) //BuildingManager.Instance.CurrentBuilding
-        });
-        //Destroy(gameObject);
+        //Debug.Log($"{building} != null && {tileData.tileType} == {TileType.None}");
+        if (CommandQueue.Instance.building != null && tileData.tileType == TileType.None)
+        {
+            GameObject building = CommandQueue.Instance.building.Prefab;
+
+            Manager.Instance.penize -= CommandQueue.Instance.building.Cost;
+            tileData.tileType = TileType.Occupied; // :(
+            CommandQueue.Instance.EnqueueCommand(new BuildCommand()
+            {
+                where = this,
+                what = building //GameObject.CreatePrimitive(PrimitiveType.Sphere) //BuildingManager.Instance.CurrentBuilding
+            });
+            //Destroy(gameObject);
+        }
     }
 }

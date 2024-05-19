@@ -12,12 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38048e35882b110449163eda73b58ac9, type: 3}
   m_Name: BuildingData
   m_EditorClassIdentifier: 
-  a: 0
   Buildings:
   - BuildingType: 0
+    Prefab: {fileID: 814411519376525305, guid: a8241a4f2285a5643a77723a8d3bcc8a, type: 3}
     Name: "V\u011B\u017E"
     Description: asasd asd asd asd
+    Cost: 10
   - BuildingType: 1
+    Prefab: {fileID: 6917945686762112018, guid: d03695ff2929bd842a4b21b34b577fa3,
+      type: 3}
     Name: "N\xE1boje"
     Description: asasd asd asd asdasasd asd asd asdasasd asd asd asdasasd asd asd
       asdasasd asd asd asd
+    Cost: 50
+  - BuildingType: 0
+    Prefab: {fileID: 2090550665469044860, guid: 869fc926bc333c14c9dcac84eb284324,
+      type: 3}
+    Name: Nikolas
+    Description: Je Frajer (kappa).
+    Cost: 100
