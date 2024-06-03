@@ -12,11 +12,14 @@ public class BuildingDataScriptable : ScriptableObject
 [Serializable]
 public class BuildingData
 {
+    
+
     public BuildingType BuildingType;
     public GameObject Prefab;
     public string Name;
     public string Description;
     public int Cost;
+
 }
 
 public enum BuildingType { 

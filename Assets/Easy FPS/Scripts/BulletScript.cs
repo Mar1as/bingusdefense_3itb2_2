@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.My;
 
 public class BulletScript : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class BulletScript : MonoBehaviour {
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
 
+	[SerializeField] public int damage = 10;
 	/*
 	* Uppon bullet creation with this script attatched,
 	* bullet creates a raycast which searches for corresponding tags.
@@ -32,7 +34,14 @@ public class BulletScript : MonoBehaviour {
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
-			}		
+                if (hit.transform.tag == "Enemy")
+                {
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+					
+					Debug.Log(damage);
+                    hit.transform.gameObject.GetComponent<IHp>().Hp -= damage;
+                }
+            }		
 			Destroy(gameObject);
 		}
 		Destroy(gameObject, 0.1f);

@@ -15,7 +15,18 @@ public class TileDisplay : MonoBehaviour
 
     public void Build(GameObject building)
     {
-        Instantiate(building, buildPlace.position, Quaternion.identity);
+        Vector3 newPos = building.transform.position;
+        foreach (Transform t in building.transform)
+        {
+            if (t.name == "Point")
+            {
+                newPos = t.localPosition;
+            }
+        }
+        Vector3 buildPos = buildPlace.position;
+        buildPos.y += (-newPos.y);
+
+        Instantiate(building, buildPos, Quaternion.identity);
         CommandQueue.Instance.building = null;
     }
 
